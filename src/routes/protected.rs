@@ -36,3 +36,4 @@ pub async fn admin_route(Extension(user): Extension<Arc<User>>) -> impl IntoResp
         ).into_response()
     }
 }
+    
