@@ -5,7 +5,7 @@ use utoipa::ToSchema;
 pub struct User {
     pub id: i32,
     pub username: String,
-    pub password: String, // Hashed in production
+    pub password: String, // In production, this should be hashed
     pub role: Role,
 }
 
@@ -24,4 +24,15 @@ pub struct LoginRequest {
 #[derive(Serialize, ToSchema)]
 pub struct LoginResponse {
     pub token: String,
+}
+
+// ✅ Added for registration feature
+#[derive(Serialize, Deserialize, ToSchema)]
+pub struct RegisterRequest {
+    /// Username of the new user
+    pub username: String,
+    /// Password for the new user
+    pub password: String,
+    /// Confirm password to validate match
+    pub confirm_password: String,
 }
